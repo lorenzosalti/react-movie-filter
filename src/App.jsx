@@ -12,9 +12,8 @@ function App() {
   const [selectGenre, setSelectGenre] = useState('')
 
   useEffect(() => {
-    console.log('componente montato')
 
-    let filteredMovies = movies
+    let filteredMovies = dataMovies
 
     if (selectGenre !== '') {
       filteredMovies = filteredMovies.filter(movie => movie.genre === selectGenre)
@@ -30,7 +29,7 @@ function App() {
       <h1>Lista dei film</h1>
 
       <select value={selectGenre} onChange={e => setSelectGenre(e.target.value)}>
-        <option value="">---</option>
+        <option value=''>---</option>
         <option>Fantascienza</option>
         <option>Thriller</option>
         <option>Romantico</option>
