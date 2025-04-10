@@ -5,12 +5,14 @@ import dataMovies from './data/movies.json'
 import { useEffect, useState } from 'react'
 
 
+// App component
 function App() {
 
+  // state variables
   const [movies, setMovies] = useState(dataMovies)
-
   const [selectGenre, setSelectGenre] = useState('')
 
+  // side effect function
   useEffect(() => {
 
     let filteredMovies = dataMovies
@@ -28,6 +30,7 @@ function App() {
     <>
       <h1>Lista dei film</h1>
 
+      <h3>Seleziona il genere desiderato</h3>
       <select value={selectGenre} onChange={e => setSelectGenre(e.target.value)}>
         <option value=''>---</option>
         <option>Fantascienza</option>
@@ -35,6 +38,8 @@ function App() {
         <option>Romantico</option>
         <option>Azione</option>
       </select>
+
+      <hr />
 
       <ul>
         {movies.map((movie, i) => <li key={i}>
