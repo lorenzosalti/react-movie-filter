@@ -9,27 +9,33 @@ function App() {
 
   const [movies, setMovies] = useState(dataMovies)
 
-  const [filter, setFilter] = useState(false)
+  const [selectGenre, setSelectGenre] = useState('')
 
   useEffect(() => {
     console.log('componente montato')
 
     let filteredMovies = movies
 
-    if (filter) {
-      filteredMovies = filteredMovies.filter(movie => movie.genre === "Azione")
+    if (selectGenre !== '') {
+      filteredMovies = filteredMovies.filter(movie => movie.genre === selectGenre)
     }
 
     setMovies(filteredMovies)
 
-  }, [filter])
+  }, [selectGenre])
 
 
   return (
     <>
       <h1>Lista dei film</h1>
 
-      <button onClick={() => setFilter(prev => !prev)}>filtra</button>
+      <select value={selectGenre} onChange={e => setSelectGenre(e.target.value)}>
+        <option value="">---</option>
+        <option>Fantascienza</option>
+        <option>Thriller</option>
+        <option>Romantico</option>
+        <option>Azione</option>
+      </select>
 
       <ul>
         {movies.map((movie, i) => <li key={i}>
